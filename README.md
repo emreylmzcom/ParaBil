@@ -29,6 +29,12 @@ Parabil uygulamasının genel özellikleri şu şekilde özetlenebilir:
 ## Görsel
 ![](https://i.hizliresim.com/7e0evmb.PNG)
 
+## Gelecek Özellikler
+
+- Hatırlatıcı -> Tahmini Çıkış Sürümü v1.5.0
+  
+
+
 ## Sürüm Notları: 
 
 - ParaBil v1.0.3
