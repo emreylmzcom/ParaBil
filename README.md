@@ -26,6 +26,8 @@ Parabil uygulamasının genel özellikleri şu şekilde özetlenebilir:
 - Aylık gelir ve gider durumu grafiksel olarak gösterilebilir.
 - Grafikler, kullanıcıya finansal durumu daha kolay anlama imkanı sunar.
 
+## Görsel
+![](https://i.hizliresim.com/7e0evmb.PNG)
 
 ## Sürüm Notları: 
 
@@ -37,3 +39,7 @@ Parabil uygulamasının genel özellikleri şu şekilde özetlenebilir:
 
 - ParaBil v1.0.3
 - - Fix
+
+## İletişim / Hata Bildirim
+emre@emreylmz.com <br>
+https://emreylmz.com/iletisim <br>
