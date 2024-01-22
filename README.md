@@ -31,14 +31,16 @@ Parabil uygulamasının genel özellikleri şu şekilde özetlenebilir:
 
 ## Sürüm Notları: 
 
+- ParaBil v1.0.3
+- - İşlemlerim sayfası Fix
+- ParaBil v1.0.2
+- - Fix 
 - ParaBil v1.0.1
 - - İşlem Sil Fix
+- ParaBil v1.0.0
+- - Yayında
 
-- ParaBil v1.0.2
-- - Fix
 
-- ParaBil v1.0.3
-- - Fix
 
 ## İletişim / Hata Bildirim
 emre@emreylmz.com <br>
