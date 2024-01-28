@@ -146,7 +146,7 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "UC_Ayarlar";
-            this.Size = new System.Drawing.Size(1120, 686);
+            this.Size = new System.Drawing.Size(1400, 857);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroup4.Panel)).EndInit();
             this.kryptonGroup4.Panel.ResumeLayout(false);

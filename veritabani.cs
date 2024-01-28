@@ -650,6 +650,11 @@ namespace ParaBil
                 command.ExecuteNonQuery();
             }
 
+            using (SQLiteCommand command = new SQLiteCommand("DELETE FROM Kategoriler", connection))
+            {
+                command.ExecuteNonQuery();
+            }
+
         }
 
         // hesapları silerse tüm işlemleri de sil (Sonra eklenecek ayarlar sayfasına)

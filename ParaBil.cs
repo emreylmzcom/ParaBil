@@ -206,13 +206,10 @@ namespace ParaBil
             // Eğer ölçek %125 ise uyarı ver
             if (Math.Abs(scale - 1.25f) < 0.01f)
             {
-                DialogResult result = MessageBox.Show("Windows ölçeklendirme oranınız %125 olarak ayarlıdır. Düzgün Görüntülenemeyebilir! Önerilen ölçeklendirme %100.\n\nDevam etmek ister misiniz?", "Uyarı", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("Windows ölçeklendirme oranınız %125 olarak ayarlıdır. Düzgün Görüntülenemeyebilir! Önerilen ölçeklendirme %100.\n", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                if (result == DialogResult.Cancel)
-                {
-                    Application.Exit(); // Uygulamayı kapat
-                }
-                // Devam edilmesi durumunda ek işlemler buraya eklenebilir
+
+                
             }
         }
 
