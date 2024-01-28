@@ -81,6 +81,7 @@
             // islem_sil
             // 
             this.islem_sil.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.islem_sil.AutoSize = true;
             this.islem_sil.Location = new System.Drawing.Point(456, 32);
             this.islem_sil.Name = "islem_sil";
             this.islem_sil.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(52)))), ((int)(((byte)(134)))));
@@ -207,6 +208,7 @@
             this.kryptonGroup2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroup1.Panel)).EndInit();
             this.kryptonGroup1.Panel.ResumeLayout(false);
+            this.kryptonGroup1.Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroup1)).EndInit();
             this.kryptonGroup1.ResumeLayout(false);
             this.ResumeLayout(false);

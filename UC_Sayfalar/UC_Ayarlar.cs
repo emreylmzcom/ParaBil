@@ -30,7 +30,12 @@ namespace ParaBil.UC_Sayfalar
                 myDatabase.tumTablolariSil();
 
 
-                MessageBox.Show("Tüm veriler silindi.");
+                DialogResult dialogResult2 = MessageBox.Show("Tüm veriler silindi.\nProgramı yeniden başlatmak için tamam'a basın.", "Uyarı", MessageBoxButtons.OK);
+                if (dialogResult2 == DialogResult.OK)
+                {
+                    Application.Restart();
+                }
+
             }
             else if (dialogResult == DialogResult.No)
             {

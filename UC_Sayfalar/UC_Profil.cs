@@ -26,6 +26,12 @@ namespace ParaBil.UC_Sayfalar
 
 
             txtBakiye.KeyPress += new KeyPressEventHandler(txtBakiye_KeyPress);
+
+
+            cmbKategoriTuru.Items.Clear();
+            // İşlem türlerini ComboBox'a yükle
+            cmbKategoriTuru.Items.Add("Gelir");
+            cmbKategoriTuru.Items.Add("Gider");
         }
 
 
@@ -33,9 +39,10 @@ namespace ParaBil.UC_Sayfalar
         public void btnKategoriEkle_Click(object sender, EventArgs e)
         {
             string kategoriAdi = txtKategoriAdi.Text;
+            // kategori türü combobox'tan al
+            string kategoriTuru = cmbKategoriTuru.Text;
 
             // kategori adı boş ise hata ver
-
             if (string.IsNullOrWhiteSpace(kategoriAdi))
             {
                 MessageBox.Show("Geçerli bir kategori adı giriniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -43,7 +50,7 @@ namespace ParaBil.UC_Sayfalar
             }
 
             // veritabani sınıfını kullanarak kategori ekle
-            myDatabase.KategoriEkle(kategoriAdi);
+            myDatabase.KategoriEkle(kategoriAdi, kategoriTuru);
 
             MessageBox.Show("Kategori başarıyla eklendi.", "Başarı", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

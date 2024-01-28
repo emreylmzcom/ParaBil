@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParaBil));
             this.menu = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menu_sil = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.emre = new System.Windows.Forms.Label();
             this.menu_profil = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -43,10 +44,9 @@
             this.max = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.close = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.icerik = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menu.SuspendLayout();
-            this.header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.header.SuspendLayout();
             this.SuspendLayout();
             // 
             // menu
@@ -63,11 +63,22 @@
             this.menu.Dock = System.Windows.Forms.DockStyle.Left;
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(160, 720);
+            this.menu.Size = new System.Drawing.Size(160, 634);
             this.menu.TabIndex = 16;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 34);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(129, 149);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
             // 
             // menu_sil
             // 
+            this.menu_sil.AutoSize = true;
             this.menu_sil.Location = new System.Drawing.Point(12, 304);
             this.menu_sil.Name = "menu_sil";
             this.menu_sil.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(52)))), ((int)(((byte)(134)))));
@@ -119,16 +130,18 @@
             // 
             this.emre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.emre.AutoSize = true;
-            this.emre.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.emre.Location = new System.Drawing.Point(21, 692);
+            this.emre.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.emre.Location = new System.Drawing.Point(32, 609);
             this.emre.Name = "emre";
-            this.emre.Size = new System.Drawing.Size(120, 19);
+            this.emre.Size = new System.Drawing.Size(99, 16);
             this.emre.TabIndex = 16;
             this.emre.Text = "EMREYLMZ.COM";
+            this.emre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.emre.Click += new System.EventHandler(this.emre_Click);
             // 
             // menu_profil
             // 
+            this.menu_profil.AutoSize = true;
             this.menu_profil.Location = new System.Drawing.Point(12, 393);
             this.menu_profil.Name = "menu_profil";
             this.menu_profil.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(52)))), ((int)(((byte)(134)))));
@@ -179,7 +192,7 @@
             // kryptonButton3
             // 
             this.kryptonButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.kryptonButton3.Location = new System.Drawing.Point(53, 620);
+            this.kryptonButton3.Location = new System.Drawing.Point(53, 534);
             this.kryptonButton3.Name = "kryptonButton3";
             this.kryptonButton3.OverrideDefault.Back.Color1 = System.Drawing.Color.Transparent;
             this.kryptonButton3.OverrideDefault.Back.Color2 = System.Drawing.Color.Transparent;
@@ -240,6 +253,7 @@
             // 
             // menu_durum
             // 
+            this.menu_durum.AutoSize = true;
             this.menu_durum.Location = new System.Drawing.Point(12, 349);
             this.menu_durum.Name = "menu_durum";
             this.menu_durum.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(52)))), ((int)(((byte)(134)))));
@@ -289,6 +303,7 @@
             // 
             // menu_ekle
             // 
+            this.menu_ekle.AutoSize = true;
             this.menu_ekle.Location = new System.Drawing.Point(12, 260);
             this.menu_ekle.Name = "menu_ekle";
             this.menu_ekle.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(52)))), ((int)(((byte)(134)))));
@@ -338,6 +353,7 @@
             // 
             // menu_ozet
             // 
+            this.menu_ozet.AutoSize = true;
             this.menu_ozet.Location = new System.Drawing.Point(12, 216);
             this.menu_ozet.Name = "menu_ozet";
             this.menu_ozet.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(52)))), ((int)(((byte)(134)))));
@@ -395,7 +411,7 @@
             this.header.Dock = System.Windows.Forms.DockStyle.Top;
             this.header.Location = new System.Drawing.Point(160, 0);
             this.header.Name = "header";
-            this.header.Size = new System.Drawing.Size(1120, 34);
+            this.header.Size = new System.Drawing.Size(953, 34);
             this.header.TabIndex = 17;
             // 
             // label3
@@ -411,7 +427,7 @@
             // min
             // 
             this.min.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.min.Location = new System.Drawing.Point(1004, 1);
+            this.min.Location = new System.Drawing.Point(837, 1);
             this.min.Name = "min";
             this.min.OverrideDefault.Back.Color1 = System.Drawing.Color.Transparent;
             this.min.OverrideDefault.Back.Color2 = System.Drawing.Color.Transparent;
@@ -473,7 +489,7 @@
             // max
             // 
             this.max.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.max.Location = new System.Drawing.Point(1040, 1);
+            this.max.Location = new System.Drawing.Point(873, 1);
             this.max.Name = "max";
             this.max.OverrideDefault.Back.Color1 = System.Drawing.Color.Transparent;
             this.max.OverrideDefault.Back.Color2 = System.Drawing.Color.Transparent;
@@ -535,7 +551,7 @@
             // close
             // 
             this.close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.close.Location = new System.Drawing.Point(1076, 1);
+            this.close.Location = new System.Drawing.Point(909, 1);
             this.close.Name = "close";
             this.close.OverrideDefault.Back.Color1 = System.Drawing.Color.Transparent;
             this.close.OverrideDefault.Back.Color2 = System.Drawing.Color.Transparent;
@@ -600,39 +616,30 @@
             this.icerik.Dock = System.Windows.Forms.DockStyle.Fill;
             this.icerik.Location = new System.Drawing.Point(160, 34);
             this.icerik.Name = "icerik";
-            this.icerik.Size = new System.Drawing.Size(1120, 686);
+            this.icerik.Size = new System.Drawing.Size(953, 600);
             this.icerik.TabIndex = 18;
             this.icerik.Paint += new System.Windows.Forms.PaintEventHandler(this.icerik_Paint);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 34);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(129, 149);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
             // 
             // ParaBil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.ClientSize = new System.Drawing.Size(1113, 634);
             this.Controls.Add(this.icerik);
             this.Controls.Add(this.header);
             this.Controls.Add(this.menu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1280, 720);
+            this.MinimumSize = new System.Drawing.Size(1091, 582);
             this.Name = "ParaBil";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.ParaBil_Load);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.header.ResumeLayout(false);
             this.header.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

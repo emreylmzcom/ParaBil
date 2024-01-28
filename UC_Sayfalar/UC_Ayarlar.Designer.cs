@@ -80,6 +80,7 @@
             // hepsinisil
             // 
             this.hepsinisil.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.hepsinisil.AutoSize = true;
             this.hepsinisil.Location = new System.Drawing.Point(458, 312);
             this.hepsinisil.Name = "hepsinisil";
             this.hepsinisil.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(52)))), ((int)(((byte)(134)))));

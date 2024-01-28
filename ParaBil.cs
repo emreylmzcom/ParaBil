@@ -1,13 +1,6 @@
-﻿using ComponentFactory.Krypton.Toolkit;
-using ParaBil.UC_Sayfalar;
+﻿using ParaBil.UC_Sayfalar;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -32,10 +25,14 @@ namespace ParaBil
         private bool isDragging = false;
         private Point lastCursor;
         private Point lastForm;
+
+
+
+
         public ParaBil()
         {
             InitializeComponent();
-
+            CheckWindowsScale();
             // veritabani sınıfını oluştur
             myDatabase = new veritabani();
             myDatabase.veritabaniolustur();
@@ -52,9 +49,13 @@ namespace ParaBil
 
             normalSize = this.Size;
             zaman();
+
+            
+
+
         }
 
-// timer oluştur bu timer için salisede bir güncellenerek zamanı label3'e yazdır
+        // timer oluştur bu timer için salisede bir güncellenerek zamanı label3'e yazdır
         private void zaman()
         {
             Timer timer = new Timer();
@@ -195,6 +196,37 @@ namespace ParaBil
             // tıklandığında web sitesine git
             System.Diagnostics.Process.Start("https://emreylmz.com");
 
+        }
+
+        private void CheckWindowsScale()
+        {
+            // Windows ölçekleme oranını kontrol et
+            float scale = GetWindowsScaleFactor();
+
+            // Eğer ölçek %125 ise uyarı ver
+            if (Math.Abs(scale - 1.25f) < 0.01f)
+            {
+                DialogResult result = MessageBox.Show("Windows ölçeklendirme oranınız %125 olarak ayarlıdır. Düzgün Görüntülenemeyebilir! Önerilen ölçeklendirme %100.\n\nDevam etmek ister misiniz?", "Uyarı", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Cancel)
+                {
+                    Application.Exit(); // Uygulamayı kapat
+                }
+                // Devam edilmesi durumunda ek işlemler buraya eklenebilir
+            }
+        }
+
+        private float GetWindowsScaleFactor()
+        {
+            using (Graphics graphics = this.CreateGraphics())
+            {
+                return graphics.DpiX / 96.0f; // Ölçekleme faktörünü hesapla
+            }
+        }
+
+        private void ParaBil_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 

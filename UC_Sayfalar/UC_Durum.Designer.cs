@@ -111,6 +111,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label3.Location = new System.Drawing.Point(191, 33);
+            this.label3.Margin = new System.Windows.Forms.Padding(3);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(159, 26);
             this.label3.TabIndex = 2;
@@ -147,6 +148,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.Location = new System.Drawing.Point(196, 33);
+            this.label2.Margin = new System.Windows.Forms.Padding(3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(149, 26);
             this.label2.TabIndex = 2;
@@ -198,21 +200,21 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(81, 27);
+            this.label1.Location = new System.Drawing.Point(124, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(379, 26);
+            this.label1.Size = new System.Drawing.Size(292, 26);
             this.label1.TabIndex = 4;
-            this.label1.Text = "En Çok Harcama Yapılan Kategori";
+            this.label1.Text = "En Çok Kullanılan Kategori";
             // 
             // labelEnCokHarcama
             // 
             this.labelEnCokHarcama.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelEnCokHarcama.AutoSize = true;
             this.labelEnCokHarcama.BackColor = System.Drawing.Color.Transparent;
-            this.labelEnCokHarcama.Font = new System.Drawing.Font("Century Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelEnCokHarcama.Location = new System.Drawing.Point(90, 86);
+            this.labelEnCokHarcama.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelEnCokHarcama.Location = new System.Drawing.Point(156, 86);
             this.labelEnCokHarcama.Name = "labelEnCokHarcama";
-            this.labelEnCokHarcama.Size = new System.Drawing.Size(0, 25);
+            this.labelEnCokHarcama.Size = new System.Drawing.Size(0, 21);
             this.labelEnCokHarcama.TabIndex = 3;
             this.labelEnCokHarcama.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -228,6 +230,7 @@
             this.kryptonGroup4.Panel.Controls.Add(this.buayrapor);
             this.kryptonGroup4.Panel.Controls.Add(this.islempdf);
             this.kryptonGroup4.Panel.Controls.Add(this.label4);
+            this.kryptonGroup4.Panel.Margin = new System.Windows.Forms.Padding(3);
             this.kryptonGroup4.Size = new System.Drawing.Size(540, 195);
             this.kryptonGroup4.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.kryptonGroup4.StateCommon.Back.Color2 = System.Drawing.Color.White;
@@ -245,7 +248,8 @@
             // buayrapor
             // 
             this.buayrapor.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buayrapor.Location = new System.Drawing.Point(268, 86);
+            this.buayrapor.AutoSize = true;
+            this.buayrapor.Location = new System.Drawing.Point(300, 86);
             this.buayrapor.Name = "buayrapor";
             this.buayrapor.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(52)))), ((int)(((byte)(134)))));
             this.buayrapor.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(52)))), ((int)(((byte)(134)))));
@@ -294,7 +298,8 @@
             // islempdf
             // 
             this.islempdf.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.islempdf.Location = new System.Drawing.Point(85, 86);
+            this.islempdf.AutoSize = true;
+            this.islempdf.Location = new System.Drawing.Point(69, 86);
             this.islempdf.Name = "islempdf";
             this.islempdf.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(52)))), ((int)(((byte)(134)))));
             this.islempdf.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(52)))), ((int)(((byte)(134)))));

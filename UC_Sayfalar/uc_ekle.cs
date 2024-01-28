@@ -28,6 +28,7 @@ namespace ParaBil.UC_Sayfalar
 
 
             txtMiktar.KeyPress += new KeyPressEventHandler(txtMiktar_KeyPress);
+            cmbIslemTuru.SelectedIndexChanged += cmbIslemTuru_SelectedIndexChanged;
 
         }
 
@@ -45,15 +46,19 @@ namespace ParaBil.UC_Sayfalar
             cmbIslemTuru.Items.Add("Gider");
 
             // cmbIslemTuru otomatik olarak "Gelir" seçili olsun
-            cmbIslemTuru.SelectedIndex = 0;
+            // cmbIslemTuru.SelectedIndex = 0;
 
 
 
             // Kategorileri ComboBox'a yükle
+
+            /*
             cmbKategori.DataSource = myDatabase.LoadKategoriler();
             cmbKategori.DisplayMember = "KategoriAdi";
             cmbKategori.ValueMember = "KategoriID";
-
+            // kategori işlem türü gider olanları yükle
+            cmbKategori.DataSource = myDatabase.LoadKategorilerByIslemTuru("Gider");
+            */
 
 
         }
@@ -70,6 +75,8 @@ namespace ParaBil.UC_Sayfalar
                 MessageBox.Show("Geçerli bir miktar giriniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+
 
             // veritabani sınıfını kullanarak işlem ekle
             myDatabase.IslemEkle(hesapID, kategoriID, islemTuru, miktar, tarih, txtAciklama.Text);
@@ -116,6 +123,27 @@ namespace ParaBil.UC_Sayfalar
             txtAciklama.Clear();
         }
 
+        private void cmbIslemTuru_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // cmbIslemTuru'nun SelectedIndexChanged olayı tetiklendiğinde çağrılır.
+            // Bu olay, işlem türü seçildiğinde otomatik olarak çağrılacaktır.
+
+            string islemTuru = cmbIslemTuru.Text;
+
+            // Kategori türünü belirle ve ComboBox'ı güncelle
+            if (islemTuru == "Gelir")
+            {
+                cmbKategori.DataSource = myDatabase.LoadKategorilerByIslemTuru("Gelir");
+            }
+            else if (islemTuru == "Gider")
+            {
+                cmbKategori.DataSource = myDatabase.LoadKategorilerByIslemTuru("Gider");
+            }
+
+            // ComboBox'ın görüntülenen ve değer özelliklerini belirle
+            cmbKategori.DisplayMember = "KategoriAdi";
+            cmbKategori.ValueMember = "KategoriID";
+        }
 
 
 

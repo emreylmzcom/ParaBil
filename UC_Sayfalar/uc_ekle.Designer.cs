@@ -173,6 +173,7 @@
             // btnIslemEkle
             // 
             this.btnIslemEkle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnIslemEkle.AutoSize = true;
             this.btnIslemEkle.Location = new System.Drawing.Point(254, 568);
             this.btnIslemEkle.Name = "btnIslemEkle";
             this.btnIslemEkle.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(52)))), ((int)(((byte)(134)))));

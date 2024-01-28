@@ -24,7 +24,8 @@ namespace ParaBil
 
             CreateTable("CREATE TABLE IF NOT EXISTS Kategoriler (" +
                         "KategoriID INTEGER PRIMARY KEY," +
-                        "KategoriAdi TEXT NOT NULL);");
+                        "KategoriAdi TEXT NOT NULL," +
+                        "KategoriTuru TEXT NOT NULL);");
 
             CreateTable("CREATE TABLE IF NOT EXISTS Islemler (" +
                         "IslemID INTEGER PRIMARY KEY," +
@@ -39,17 +40,17 @@ namespace ParaBil
 
             // Kategorileri ekleyen SQL sorguları
             string[] kategoriSorgulari = {
-            "INSERT INTO Kategoriler (KategoriAdi) SELECT 'Maaş' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Maaş');",
-            "INSERT INTO Kategoriler (KategoriAdi) SELECT 'Diğer Gelirler' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Diğer Gelirler');",
-            "INSERT INTO Kategoriler (KategoriAdi) SELECT 'Kira' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Kira');",
-            "INSERT INTO Kategoriler (KategoriAdi) SELECT 'Elektrik ve Su Faturası' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Elektrik ve Su Faturası');",
-            "INSERT INTO Kategoriler (KategoriAdi) SELECT 'Yiyecek ve İçecek' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Yiyecek ve İçecek');",
-            "INSERT INTO Kategoriler (KategoriAdi) SELECT 'Ulaşım' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Ulaşım');",
-            "INSERT INTO Kategoriler (KategoriAdi) SELECT 'Giyim ve Ayakkabı' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Giyim ve Ayakkabı');",
-            "INSERT INTO Kategoriler (KategoriAdi) SELECT 'Eğlence' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Eğlence');",
-            "INSERT INTO Kategoriler (KategoriAdi) SELECT 'Sağlık ve İlaçlar' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Sağlık ve İlaçlar');",
-            "INSERT INTO Kategoriler (KategoriAdi) SELECT 'Kredi Kartı Ödemeleri' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Kredi Kartı Ödemeleri');",
-            "INSERT INTO Kategoriler (KategoriAdi) SELECT 'Diğer Giderler' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Diğer Giderler');"
+            "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Maaş', 'Gelir' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Maaş');",
+            "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Diğer Gelirler', 'Gelir' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Diğer Gelirler');",
+            "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Kira', 'Gider' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Kira');",
+            "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Elektrik ve Su Faturası', 'Gider' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Elektrik ve Su Faturası');",
+            "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Yiyecek ve İçecek', 'Gider' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Yiyecek ve İçecek');",
+            "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Ulaşım', 'Gider' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Ulaşım');",
+            "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Giyim ve Ayakkabı', 'Gider' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Giyim ve Ayakkabı');",
+            "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Eğlence', 'Gider' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Eğlence');",
+            "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Sağlık ve İlaçlar', 'Gider' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Sağlık ve İlaçlar');",
+            "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Kredi Kartı Ödemeleri', 'Gider' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Kredi Kartı Ödemeleri');",
+            "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Diğer Giderler', 'Gider' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Diğer Giderler');"
         };
 
             // Kategorileri ekleyen sorguları döngü ile çalıştırma
@@ -91,12 +92,13 @@ namespace ParaBil
             }
         }
 
-        public void KategoriEkle(string kategoriAdi)
+        public void KategoriEkle(string kategoriAdi, string kategoriTuru)
         {
             using (SQLiteCommand command = new SQLiteCommand(
-                "INSERT INTO Kategoriler (KategoriAdi) VALUES (@KategoriAdi);", connection))
+                "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) VALUES (@KategoriAdi, @KategoriTuru);", connection))
             {
                 command.Parameters.AddWithValue("@KategoriAdi", kategoriAdi);
+                command.Parameters.AddWithValue("@KategoriTuru", kategoriTuru);
                 command.ExecuteNonQuery();
             }
         }
@@ -635,7 +637,7 @@ namespace ParaBil
 
 
 
-        // hesaplar, işlemler, kategoriler tablolarını sıfırla
+        // hesaplar ve işlemler tablolarını sıfırla
         public void tumTablolariSil()
         {
             using (SQLiteCommand command = new SQLiteCommand("DELETE FROM Hesaplar", connection))
@@ -648,11 +650,56 @@ namespace ParaBil
                 command.ExecuteNonQuery();
             }
 
-            using (SQLiteCommand command = new SQLiteCommand("DELETE FROM Kategoriler", connection))
+        }
+
+        // hesapları silerse tüm işlemleri de sil (Sonra eklenecek ayarlar sayfasına)
+        /*
+        public void hesapSil(int hesapID)
+        {
+            using (SQLiteCommand command = new SQLiteCommand("DELETE FROM Hesaplar WHERE HesapID = @HesapID", connection))
             {
+                command.Parameters.AddWithValue("@HesapID", hesapID);
+                command.ExecuteNonQuery();
+            }
+
+            using (SQLiteCommand command = new SQLiteCommand("DELETE FROM Islemler WHERE HesapID = @HesapID", connection))
+            {
+                command.Parameters.AddWithValue("@HesapID", hesapID);
                 command.ExecuteNonQuery();
             }
         }
+        */
+
+
+        // kategori işlem türü
+        public List<Kategori> LoadKategorilerByIslemTuru(string islemTuru)
+        {
+            List<Kategori> kategoriler = new List<Kategori>();
+
+            using (SQLiteCommand command = new SQLiteCommand("SELECT KategoriID, KategoriAdi FROM Kategoriler WHERE KategoriTuru = @KategoriTuru", connection))
+            {
+                command.Parameters.AddWithValue("@KategoriTuru", islemTuru);
+
+                using (SQLiteDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Kategori kategori = new Kategori
+                        {
+                            KategoriID = Convert.ToInt32(reader["KategoriID"]),
+                            KategoriAdi = reader["KategoriAdi"].ToString()
+                        };
+
+                        kategoriler.Add(kategori);
+                    }
+                }
+            }
+
+            return kategoriler;
+        }
+
+
+
 
 
 

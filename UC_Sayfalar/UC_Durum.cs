@@ -173,9 +173,9 @@ namespace ParaBil.UC_Sayfalar
                 rapor.AppendLine($"Hesap Adı: {gider.HesapAdi}, Kategori Adı: {gider.KategoriAdi}, Miktar: {gider.Miktar}, Tarih: {gider.Tarih}");
             }
 
-            // Raporu bir dosyaya veya ekrana yazdırabilirsiniz.
-            // Örneğin, MessageBox ile ekrana yazdıralım.
-            //MessageBox.Show(rapor.ToString(), "İşlem Raporu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Deneme amaçlı MessageBox ile ekrana yazdıralım.
+            // MessageBox.Show(rapor.ToString(), "İşlem Raporu", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Raporu PDF dosyasına kaydet
             KaydetPDF(rapor.ToString());
@@ -209,7 +209,7 @@ namespace ParaBil.UC_Sayfalar
             }
             else
             {
-                labelText += "Harcama bilgisi bulunamadı.";
+                labelText += "Gelir veya Gider ekledikten\n sonra tekrar kontrol ediniz.";
             }
 
             // Label kontrolünün metnini güncelle
@@ -259,9 +259,7 @@ namespace ParaBil.UC_Sayfalar
             // Raporu PDF dosyasına kaydet
             KaydetPDF(rapor.ToString());
 
-            // Raporu bir dosyaya veya ekrana yazdırabilirsiniz.
-            // Örneğin, MessageBox ile ekrana yazdıralım.
-            //MessageBox.Show("Rapor başarıyla kaydedildi.", "İşlem Raporu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+         
         }
 
         private void KaydetPDF(string icerik)
