@@ -36,12 +36,14 @@ Parabil uygulamasının genel özellikleri şu şekilde özetlenebilir:
 
 
 ## Sürüm Notları: 
-### Parabil v1.1.0
+### ParaBil v1.1.1
+- Fix
+### ParaBil v1.1.0
 - Kategori Türleri (Gelir, Gider)
 - Ekle işleminde gelir veya gider seçeneği seçildiğinde kategoriler, kategori türüne göre çıkması
 - Windows ölçeklendirmeye göre ekranı düzeltme
 - Ayarlardan veri tabanını sildiğinizde programı yeniden başlatmayı sağlıyor
--  Genel düzeltmeler
+- Genel düzeltmeler
 ### ParaBil v1.0.3
 - İşlemlerim sayfası Fix
 ### ParaBil v1.0.2
