@@ -80,14 +80,17 @@ namespace ParaBil.UC_Sayfalar
             // txtBakiye'ı başlatmadan önce kontrol et
             if (txtBakiye != null)
             {
-                // Sadece sayılar, kontrol tuşları ve ondalık ayırıcı (nokta) kabul edilsin
-                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != ','))
+                // Sadece sayılar, kontrol tuşları ve ondalık ayırıcı (nokta) kabul edilsin ve - ile başlayabilsin
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != ',') && (e.KeyChar != '-'))
                 {
                     e.Handled = true;
 
                     // Hata mesajını kullanıcıya göster
-                    MessageBox.Show("Lütfen sadece sayısal değerler giriniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lütfen sadece sayısal değerler giriniz.\nSadece eksi '-' ile başlayabilir.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
+
+
 
                 // Eğer nokta veya virgül kullanıcının birinci karakterse, engelle
                 if ((e.KeyChar == '.' || e.KeyChar == ',') && txtBakiye.Text.IndexOf('.') > -1)

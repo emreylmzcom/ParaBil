@@ -224,6 +224,12 @@
     <Compile Include="UC_Sayfalar\uc_ekle.Designer.cs">
       <DependentUpon>uc_ekle.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_Sayfalar\UC_Not.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Sayfalar\UC_Not.Designer.cs">
+      <DependentUpon>UC_Not.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_Sayfalar\UC_ozet.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -263,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_Sayfalar\uc_ekle.resx">
       <DependentUpon>uc_ekle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Sayfalar\UC_Not.resx">
+      <DependentUpon>UC_Not.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_Sayfalar\UC_ozet.resx">
       <DependentUpon>UC_ozet.cs</DependentUpon>

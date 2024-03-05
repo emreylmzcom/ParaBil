@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iText.Commons.Bouncycastle.Cert.Ocsp;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -37,6 +38,13 @@ namespace ParaBil
                         "Aciklama TEXT," +
                         "FOREIGN KEY (HesapID) REFERENCES Hesaplar(HesapID)," +
                         "FOREIGN KEY (KategoriID) REFERENCES Kategoriler(KategoriID));");
+            
+            CreateTable("CREATE TABLE IF NOT EXISTS Notlar (" +
+                "NotID INTEGER PRIMARY KEY," +
+                "Baslik TEXT NOT NULL," +
+                "Icerik TEXT NOT NULL," +
+                "Tarih DATE NOT NULL);");
+
 
             // Kategorileri ekleyen SQL sorguları
             string[] kategoriSorgulari = {
@@ -657,30 +665,17 @@ namespace ParaBil
 
         }
 
-        // hesapları silerse tüm işlemleri de sil (Sonra eklenecek ayarlar sayfasına)
-        /*
-        public void hesapSil(int hesapID)
-        {
-            using (SQLiteCommand command = new SQLiteCommand("DELETE FROM Hesaplar WHERE HesapID = @HesapID", connection))
-            {
-                command.Parameters.AddWithValue("@HesapID", hesapID);
-                command.ExecuteNonQuery();
-            }
 
-            using (SQLiteCommand command = new SQLiteCommand("DELETE FROM Islemler WHERE HesapID = @HesapID", connection))
-            {
-                command.Parameters.AddWithValue("@HesapID", hesapID);
-                command.ExecuteNonQuery();
-            }
-        }
-        */
 
 
         // kategori işlem türü
         public List<Kategori> LoadKategorilerByIslemTuru(string islemTuru)
         {
             List<Kategori> kategoriler = new List<Kategori>();
-
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             using (SQLiteCommand command = new SQLiteCommand("SELECT KategoriID, KategoriAdi FROM Kategoriler WHERE KategoriTuru = @KategoriTuru", connection))
             {
                 command.Parameters.AddWithValue("@KategoriTuru", islemTuru);
@@ -699,13 +694,79 @@ namespace ParaBil
                     }
                 }
             }
-
+            connection.Close();
             return kategoriler;
         }
 
 
+        public void NotEkle(string baslik, string icerik)
+        {
 
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+            using (SQLiteCommand command = new SQLiteCommand(
+                "INSERT INTO Notlar (Baslik, Icerik, Tarih) VALUES (@Baslik, @Icerik, @Tarih);", connection))
+            {
+                command.Parameters.AddWithValue("@Baslik", baslik);
+                command.Parameters.AddWithValue("@Icerik", icerik);
+                command.Parameters.AddWithValue("@Tarih", DateTime.Now);
+                command.ExecuteNonQuery();
+            }
 
+            connection.Close();
+        }
+
+        public List<Not> TumNotlariGetir()
+        {
+            List<Not> notlar = new List<Not>();
+
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+            using (SQLiteCommand command = new SQLiteCommand("SELECT * FROM Notlar", connection))
+            {
+                using (SQLiteDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Not not = new Not
+                        {
+                            NotID = Convert.ToInt32(reader["NotID"]),
+                            Baslik = reader["Baslik"].ToString(),
+                            Icerik = reader["Icerik"].ToString(),
+                            Tarih = Convert.ToDateTime(reader["Tarih"])
+                        };
+
+                        notlar.Add(not);
+                    }
+                }
+            }
+
+            connection.Close();
+            return notlar;
+            
+        }
+
+        public void NotSil(int notID)
+        {
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+
+            using (SQLiteCommand command = new SQLiteCommand("DELETE FROM Notlar WHERE NotID = @NotID;", connection))
+            {
+                command.Parameters.AddWithValue("@NotID", notID);
+                command.ExecuteNonQuery();
+            }
+
+            connection.Close();
+        }
+
+       
 
 
     }
@@ -776,6 +837,16 @@ namespace ParaBil
 
         // Diğer özellikler ve metotlar...
     }
+
+
+    public class Not
+    {
+        public int NotID { get; set; }
+        public string Baslik { get; set; }
+        public string Icerik { get; set; }
+        public DateTime Tarih { get; set; }
+    }
+
 }
 
 

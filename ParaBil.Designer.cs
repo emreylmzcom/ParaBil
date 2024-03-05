@@ -44,6 +44,7 @@
             this.max = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.close = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.icerik = new System.Windows.Forms.Panel();
+            this.menu_not = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.header.SuspendLayout();
@@ -52,6 +53,7 @@
             // menu
             // 
             this.menu.BackColor = System.Drawing.Color.White;
+            this.menu.Controls.Add(this.menu_not);
             this.menu.Controls.Add(this.pictureBox1);
             this.menu.Controls.Add(this.menu_sil);
             this.menu.Controls.Add(this.emre);
@@ -620,6 +622,56 @@
             this.icerik.TabIndex = 18;
             this.icerik.Paint += new System.Windows.Forms.PaintEventHandler(this.icerik_Paint);
             // 
+            // menu_not
+            // 
+            this.menu_not.AutoSize = true;
+            this.menu_not.Location = new System.Drawing.Point(12, 437);
+            this.menu_not.Name = "menu_not";
+            this.menu_not.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(52)))), ((int)(((byte)(134)))));
+            this.menu_not.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(52)))), ((int)(((byte)(134)))));
+            this.menu_not.OverrideDefault.Back.ColorAngle = 45F;
+            this.menu_not.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(52)))), ((int)(((byte)(134)))));
+            this.menu_not.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(52)))), ((int)(((byte)(134)))));
+            this.menu_not.OverrideDefault.Border.ColorAngle = 45F;
+            this.menu_not.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.menu_not.OverrideDefault.Border.Rounding = 18;
+            this.menu_not.OverrideDefault.Border.Width = 1;
+            this.menu_not.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.menu_not.Size = new System.Drawing.Size(129, 38);
+            this.menu_not.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(52)))), ((int)(((byte)(134)))));
+            this.menu_not.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(52)))), ((int)(((byte)(134)))));
+            this.menu_not.StateCommon.Back.ColorAngle = 45F;
+            this.menu_not.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(52)))), ((int)(((byte)(134)))));
+            this.menu_not.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(52)))), ((int)(((byte)(134)))));
+            this.menu_not.StateCommon.Border.ColorAngle = 45F;
+            this.menu_not.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.menu_not.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.menu_not.StateCommon.Border.Rounding = 18;
+            this.menu_not.StateCommon.Border.Width = 1;
+            this.menu_not.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.menu_not.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.menu_not.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.menu_not.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(17)))), ((int)(((byte)(44)))));
+            this.menu_not.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(17)))), ((int)(((byte)(44)))));
+            this.menu_not.StateTracking.Back.ColorAngle = 45F;
+            this.menu_not.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(17)))), ((int)(((byte)(44)))));
+            this.menu_not.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(17)))), ((int)(((byte)(44)))));
+            this.menu_not.StateTracking.Border.ColorAngle = 45F;
+            this.menu_not.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.menu_not.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.menu_not.StateTracking.Border.Rounding = 18;
+            this.menu_not.StateTracking.Border.Width = 1;
+            this.menu_not.TabIndex = 19;
+            this.menu_not.TabStop = false;
+            this.menu_not.Values.Text = "Not";
+            this.menu_not.Click += new System.EventHandler(this.menu_not_Click);
+            // 
             // ParaBil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -660,6 +712,7 @@
         private System.Windows.Forms.Label label3;
         private ComponentFactory.Krypton.Toolkit.KryptonButton menu_sil;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton menu_not;
     }
 }
 

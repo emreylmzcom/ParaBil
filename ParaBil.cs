@@ -15,6 +15,7 @@ namespace ParaBil
         UC_Profil uc_profil = new UC_Profil();
         UC_Sil uc_sil = new UC_Sil();
         UC_Ayarlar uc_ayarlar = new UC_Ayarlar();
+        UC_Notcs UC_Notcs = new UC_Notcs();
 
         private bool isMaximized = false;
         private System.Drawing.Size normalSize;
@@ -224,6 +225,13 @@ namespace ParaBil
         private void ParaBil_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void menu_not_Click(object sender, EventArgs e)
+        {
+            icerik.Controls.Clear();
+            icerik.Controls.Add(UC_Notcs);
+            UC_Notcs.Dock = DockStyle.Fill;
         }
     }
 
