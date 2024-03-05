@@ -26,16 +26,18 @@ Parabil uygulamasının genel özellikleri şu şekilde özetlenebilir:
 - Aylık gelir ve gider durumu grafiksel olarak gösterilebilir.
 - Grafikler, kullanıcıya finansal durumu daha kolay anlama imkanı sunar.
 
+## Not Ekleme
+- Not oluşturabilir, silebilir ve görüntüleyebilirsiniz.
+
 ## Görsel
 ![](https://i.hizliresim.com/7e0evmb.PNG)
 
-## Gelecek Özellikler
-
-- Hatırlatıcı -> Tahmini Çıkış Sürümü v1.5.0
-  
-
 
 ## Sürüm Notları: 
+### ParaBil v1.2
+- Not kısmı eklendi.
+- Veritabanı bağlantı hataları düzeltildi
+
 ### ParaBil v1.1.1
 - Fix
 ### ParaBil v1.1.0
