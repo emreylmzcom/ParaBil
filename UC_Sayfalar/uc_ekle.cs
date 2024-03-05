@@ -39,7 +39,7 @@ namespace ParaBil.UC_Sayfalar
             cmbHesaplar.DataSource = myDatabase.LoadHesaplar();
             cmbHesaplar.DisplayMember = "HesapAdi";
             cmbHesaplar.ValueMember = "HesapID";
-
+            
             cmbIslemTuru.Items.Clear();
             // İşlem türlerini ComboBox'a yükle
             cmbIslemTuru.Items.Add("Gelir");
@@ -83,6 +83,15 @@ namespace ParaBil.UC_Sayfalar
 
             MessageBox.Show("İşlem başarıyla eklendi.", "Başarı", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Temizle();
+
+
+            // içerikleri temizle
+            txtAciklama.Text = "";
+            txtMiktar.Text = "";
+            // comboboxları temizle
+            cmbHesaplar.SelectedIndex = 0;
+            cmbIslemTuru.SelectedIndex = 0;
+            cmbKategori.SelectedIndex = 0;
 
         }
 

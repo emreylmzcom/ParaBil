@@ -50,6 +50,8 @@ namespace ParaBil
             string[] kategoriSorgulari = {
             "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Maaş', 'Gelir' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Maaş');",
             "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Diğer Gelirler', 'Gelir' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Diğer Gelirler');",
+             "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Kredi Kartı Ödemeleri', 'Gelir' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Kredi Kartı Ödemeleri');",
+
             "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Kira', 'Gider' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Kira');",
             "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Elektrik ve Su Faturası', 'Gider' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Elektrik ve Su Faturası');",
             "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Yiyecek ve İçecek', 'Gider' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Yiyecek ve İçecek');",
@@ -57,7 +59,6 @@ namespace ParaBil
             "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Giyim ve Ayakkabı', 'Gider' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Giyim ve Ayakkabı');",
             "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Eğlence', 'Gider' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Eğlence');",
             "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Sağlık ve İlaçlar', 'Gider' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Sağlık ve İlaçlar');",
-            "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Kredi Kartı Ödemeleri', 'Gider' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Kredi Kartı Ödemeleri');",
             "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) SELECT 'Diğer Giderler', 'Gider' WHERE NOT EXISTS (SELECT 1 FROM Kategoriler WHERE KategoriAdi = 'Diğer Giderler');"
         };
 
@@ -83,14 +84,23 @@ namespace ParaBil
 
         private void CreateTable(string createTableQuery)
         {
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             using (SQLiteCommand command = new SQLiteCommand(createTableQuery, connection))
             {
                 command.ExecuteNonQuery();
             }
+            connection.Close();
         }
 
         public void HesapEkle(string hesapAdi, double bakiye)
         {
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             using (SQLiteCommand command = new SQLiteCommand(
                 "INSERT INTO Hesaplar (HesapAdi, Bakiye) VALUES (@HesapAdi, @Bakiye);", connection))
             {
@@ -98,10 +108,15 @@ namespace ParaBil
                 command.Parameters.AddWithValue("@Bakiye", bakiye);
                 command.ExecuteNonQuery();
             }
+            connection.Close();
         }
 
         public void KategoriEkle(string kategoriAdi, string kategoriTuru)
         {
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             using (SQLiteCommand command = new SQLiteCommand(
                 "INSERT INTO Kategoriler (KategoriAdi, KategoriTuru) VALUES (@KategoriAdi, @KategoriTuru);", connection))
             {
@@ -109,6 +124,7 @@ namespace ParaBil
                 command.Parameters.AddWithValue("@KategoriTuru", kategoriTuru);
                 command.ExecuteNonQuery();
             }
+            connection.Close();
         }
 
         public void IslemEkle(int hesapID, int kategoriID, string islemTuru, double miktar, DateTime tarih, string aciklama)
@@ -128,7 +144,10 @@ namespace ParaBil
 
             // Hesap bakiyesini güncelle
             UpdateHesapBakiye(hesapID, hesapBakiye);
-
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             // İşlemi ekle
             using (SQLiteCommand command = new SQLiteCommand(
                 "INSERT INTO Islemler (HesapID, KategoriID, IslemTuru, Miktar, Tarih, Aciklama) " +
@@ -142,13 +161,17 @@ namespace ParaBil
                 command.Parameters.AddWithValue("@Aciklama", aciklama);
                 command.ExecuteNonQuery();
             }
+            connection.Close();
         }
 
         public double GetHesapBakiye(int hesapID)
         {
             // İlgili hesabın bakiyesini al
             double bakiye = 0.0;
-
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             using (SQLiteCommand command = new SQLiteCommand(
                 "SELECT Bakiye FROM Hesaplar WHERE HesapID = @HesapID;", connection))
             {
@@ -162,12 +185,16 @@ namespace ParaBil
                     }
                 }
             }
-
+            connection.Close();
             return bakiye;
         }
 
         public void UpdateHesapBakiye(int hesapID, double yeniBakiye)
         {
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             // Hesap bakiyesini güncelle
             using (SQLiteCommand command = new SQLiteCommand(
                 "UPDATE Hesaplar SET Bakiye = @YeniBakiye WHERE HesapID = @HesapID;", connection))
@@ -176,12 +203,16 @@ namespace ParaBil
                 command.Parameters.AddWithValue("@YeniBakiye", yeniBakiye);
                 command.ExecuteNonQuery();
             }
+            connection.Close();
         }
 
         public List<Hesap> LoadHesaplar()
         {
             List<Hesap> hesaplar = new List<Hesap>();
-
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             using (SQLiteCommand command = new SQLiteCommand("SELECT HesapID, HesapAdi FROM Hesaplar", connection))
             {
                 using (SQLiteDataReader reader = command.ExecuteReader())
@@ -198,14 +229,17 @@ namespace ParaBil
                     }
                 }
             }
-
+            connection.Close();
             return hesaplar;
         }
 
         public List<Kategori> LoadKategoriler()
         {
             List<Kategori> kategoriler = new List<Kategori>();
-
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             using (SQLiteCommand command = new SQLiteCommand("SELECT KategoriID, KategoriAdi FROM Kategoriler", connection))
             {
                 using (SQLiteDataReader reader = command.ExecuteReader())
@@ -222,7 +256,7 @@ namespace ParaBil
                     }
                 }
             }
-
+            connection.Close();
             return kategoriler;
         }
 
@@ -234,7 +268,10 @@ namespace ParaBil
 
 
             double toplamBakiye = 0;
-
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             using (SQLiteCommand command = new SQLiteCommand("SELECT Bakiye FROM Hesaplar", connection))
             {
                 using (SQLiteDataReader reader = command.ExecuteReader())
@@ -245,7 +282,7 @@ namespace ParaBil
                     }
                 }
             }
-
+            connection.Close();
             return toplamBakiye;
         }
 
@@ -254,7 +291,10 @@ namespace ParaBil
         public double GetBuAykiToplamGelir()
         {
             double toplamGelir = 0;
-
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             using (SQLiteCommand command = new SQLiteCommand("SELECT Miktar FROM Islemler WHERE IslemTuru = 'Gelir' AND strftime('%m', Tarih) = strftime('%m', 'now')", connection))
             {
                 using (SQLiteDataReader reader = command.ExecuteReader())
@@ -265,7 +305,7 @@ namespace ParaBil
                     }
                 }
             }
-
+            connection.Close();
             return toplamGelir;
         }
 
@@ -273,7 +313,10 @@ namespace ParaBil
         public double GetBuAykiToplamGider()
         {
             double toplamGider = 0;
-
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             using (SQLiteCommand command = new SQLiteCommand("SELECT Miktar FROM Islemler WHERE IslemTuru = 'Gider' AND strftime('%m', Tarih) = strftime('%m', 'now')", connection))
             {
                 using (SQLiteDataReader reader = command.ExecuteReader())
@@ -284,7 +327,7 @@ namespace ParaBil
                     }
                 }
             }
-
+            connection.Close();
             return toplamGider;
         }
 
@@ -648,6 +691,10 @@ namespace ParaBil
         // hesaplar ve işlemler tablolarını sıfırla
         public void tumTablolariSil()
         {
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
             using (SQLiteCommand command = new SQLiteCommand("DELETE FROM Hesaplar", connection))
             {
                 command.ExecuteNonQuery();
@@ -662,7 +709,7 @@ namespace ParaBil
             {
                 command.ExecuteNonQuery();
             }
-
+            connection.Close();
         }
 
 

@@ -83,6 +83,12 @@ namespace ParaBil.UC_Sayfalar
 
             // Listeyi güncelle
             NotlariListele();
+
+
+            // TextBox'ları temizle
+            txtBaslik.Text = "";
+            txtIcerik.Text = "";
+
         }
 
 

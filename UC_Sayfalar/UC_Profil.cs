@@ -53,6 +53,10 @@ namespace ParaBil.UC_Sayfalar
             myDatabase.KategoriEkle(kategoriAdi, kategoriTuru);
 
             MessageBox.Show("Kategori başarıyla eklendi.", "Başarı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // textboxları temizle
+            txtKategoriAdi.Text = "";
+            cmbKategoriTuru.Text = "";
         }
 
         public void btnHesapEkle_Click(object sender, EventArgs e)
@@ -70,6 +74,11 @@ namespace ParaBil.UC_Sayfalar
             myDatabase.HesapEkle(hesapAdi, bakiye);
 
             MessageBox.Show("Hesap başarıyla eklendi.", "Başarı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // textboxları temizle
+            txtHesapAdi.Text = "";
+            txtBakiye.Text = "";
+
         }
 
 
