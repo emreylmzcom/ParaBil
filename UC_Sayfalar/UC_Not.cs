@@ -70,6 +70,8 @@ namespace ParaBil.UC_Sayfalar
                 // İçeriği MessageBox ile göster
                 MessageBox.Show($"Başlık: {baslik}\nİçerik: {icerik}\nTarih: {tarih}", "Not Detayı");
             }
+           
+
         }
         private void btnNotEkle_Click(object sender, EventArgs e)
         {
@@ -104,15 +106,37 @@ namespace ParaBil.UC_Sayfalar
             /// Geçerli bir indeks kontrolü yap
             if (e.RowIndex >= 0 && e.RowIndex < dataGridViewNotlar.Rows.Count)
             {
-                // Seçilen hücrenin içeriğini al
-                string baslik = dataGridViewNotlar.Rows[e.RowIndex].Cells["Baslik"].Value.ToString();
-                string icerik = dataGridViewNotlar.Rows[e.RowIndex].Cells["Icerik"].Value.ToString();
-                string tarih = dataGridViewNotlar.Rows[e.RowIndex].Cells["Tarih"].Value.ToString();
+                string baslik = GetCellValue(e.RowIndex, "Baslik");
+                string icerik = GetCellValue(e.RowIndex, "Icerik");
+                string tarih = GetCellValue(e.RowIndex, "Tarih");
 
-                // İçeriği MessageBox ile göster
-                MessageBox.Show($"Başlık: {baslik}\nİçerik: {icerik}\nTarih: {tarih}", "Not Detayı:");
+                if (baslik != null && icerik != null && tarih != null)
+                {
+                    // İçeriği MessageBox ile göster
+                    MessageBox.Show($"Başlık: {baslik}\nİçerik: {icerik}\nTarih: {tarih}", "Not Detayı:");
+                }
+                else
+                {
+                    // Hücre değerleri null olduğunda yapılacak işlemler
+                    MessageBox.Show("Bazı hücre değerleri null. İşlem yapılmadı.", "Uyarı");
+                }
             }
         }
+
+            private string GetCellValue(int rowIndex, string columnName)
+            {
+                object cellValue = dataGridViewNotlar.Rows[rowIndex].Cells[columnName].Value;
+
+                if (cellValue != null)
+                {
+                    return cellValue.ToString();
+                }
+                else
+                {
+                    // Eğer hücre değeri null ise hiçbir işlem yapma
+                    return null;
+                }
+            }
 
 
 
