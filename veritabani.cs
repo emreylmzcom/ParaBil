@@ -9,7 +9,7 @@ namespace ParaBil
 {
     internal class veritabani
     {
-        private SQLiteConnection connection;
+        public SQLiteConnection connection;
 
 
 

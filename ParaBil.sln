@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParaBil", "ParaBil.csproj", "{2816DBD5-3AAB-4892-BE8B-9271DF077368}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Parabil", "..\Setup\Parabil\Parabil.vdproj", "{EC48D1B6-E6C7-4D39-8CDA-03BFD9B3D26A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{2816DBD5-3AAB-4892-BE8B-9271DF077368}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2816DBD5-3AAB-4892-BE8B-9271DF077368}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2816DBD5-3AAB-4892-BE8B-9271DF077368}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC48D1B6-E6C7-4D39-8CDA-03BFD9B3D26A}.Debug|Any CPU.ActiveCfg = Debug
+		{EC48D1B6-E6C7-4D39-8CDA-03BFD9B3D26A}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
